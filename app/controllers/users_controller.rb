@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    skip_before_action :require_login, only: [:new, :create]
 
     def new
         @user = User.new
@@ -15,6 +16,8 @@ class UsersController < ApplicationController
     end
 
     def show
+        @user = User.find_by(id: params[:id])
+        #redirect_to '/' if !@user
     end
 
     private

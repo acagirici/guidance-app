@@ -1,0 +1,8 @@
+<h1>Welcome to the Guidance App! </h1>
+
+  <% if flash[:error] %>
+    <%= flash[:error] %>
+  <% end %><br>
+
+<%= link_to "Sign Up", signup_path %> || 
+<%= link_to "Login", login_path %>
