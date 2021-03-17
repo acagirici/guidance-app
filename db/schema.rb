@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_13_025902) do
+ActiveRecord::Schema.define(version: 2021_03_17_005738) do
 
   create_table "notes", force: :cascade do |t|
     t.text "content"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2021_03_13_025902) do
   create_table "students", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.integer "birth_date"
+    t.datetime "birth_date"
     t.integer "grade_level"
     t.string "career_goal"
     t.integer "user_id"

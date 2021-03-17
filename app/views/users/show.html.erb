@@ -1,5 +1,8 @@
-<h1> Welcome <%= @user.username %> </h1>
+<h1> Welcome <%= current_user.username %> </h1>
 
-<%= form_tag logout_path, method: "delete" do %>
-    <%= submit_tag "Logout" %>
-<% end %>
+<h1><%= display_students %></h1>
+<ul>
+    <% @user.students.each do |s|%>
+      <li><%= link_to s.first_name, student_path(s) %> - <%= s.last_name%> </li>
+    <% end %>
+</ul>

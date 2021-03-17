@@ -1,0 +1,10 @@
+<h1><%= @student.last_name %>, <%= @student.first_name %> Information</h1>
+<p><strong>Student Grade:</strong> <%= @student.grade_level %> || <strong>Student DOB:</strong> <%= @student.birth_date.strftime("%m/%d/%Y") %> || <strong>Student Plan:</strong> <%= @student.career_goal %></p>
+<p><%= link_to "Add A New Meeting Note", new_student_note_path(@student)%></p>
+<h4>Meeting Notes</h4>
+
+  <% @student.notes.each do |n| %>
+    <li>
+      <%= n.user.username %> submitted "<%= n.content %>" on this student: <%= link_to n.content, note_path(n) %>
+    </li>
+  <% end %>

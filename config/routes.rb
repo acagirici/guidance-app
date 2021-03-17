@@ -7,8 +7,14 @@ Rails.application.routes.draw do
 
   delete '/logout' => 'sessions#destroy'
 
-  resources :students
+  resources :students do
+    resources :notes
+  end
+
   resources :notes
-  resources :users
+
+  resources :users do
+    resources :students, shallow: true
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,0 +1,13 @@
+<% if @student %>
+    <h1>Meeting Notes for <%= @student.first_name %> - <%= @student.last_name %></h1>
+<% else %>
+    <h1>All Meeting Notes</h1>
+<% end %>
+
+<ul>
+  <% @notes.each do |n| %>
+    <li>
+      <%= n.user.username %> submitted "<%= n.content %>" on this student: <%= link_to n.student.first_name, student_path(n.student_id) %>
+    </li>
+  <% end %>
+</ul>
