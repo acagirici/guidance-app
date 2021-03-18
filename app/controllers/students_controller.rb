@@ -9,8 +9,11 @@ class StudentsController < ApplicationController
     end
 
     def index
-        params[:user_id] && @user = User.find_by_id(params[:user_id])
-        @students = @user.students.alpha
+        if params[:user_id] && @user = User.find_by_id(params[:user_id])
+            @students = @user.students.all.alpha
+        else
+            @students = Student.all.alpha.includes(:user)
+        end
     end
 
     def create
@@ -25,6 +28,21 @@ class StudentsController < ApplicationController
     def show
         @student = Student.find_by(id: params[:id])
     end
+
+    def edit
+        @student = Student.find_by_id(params[:id])
+        redirect_to students_path if !@student || @student.user != current_user
+      end
+    
+      def update
+         @student = Student.find_by(id: params[:id])
+         redirect_to students_path if !@student || @student.user != current_user
+        if @student.update(student_params)
+          redirect_to student_path(@student)
+        else
+          render :edit
+        end
+      end
 
     private
 

@@ -16,8 +16,8 @@ class UsersController < ApplicationController
     end
 
     def show
-        @user = User.find_by(id: params[:id])
-        #redirect_to '/' if !@user
+        @user = User.includes(:students).find_by(id: params[:id])
+        redirect_to '/' if !@user
     end
 
     private

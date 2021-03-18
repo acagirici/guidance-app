@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   delete '/logout' => 'sessions#destroy'
 
+  get '/auth/:provider/callback' => 'sessions#omni_signin'
+
   resources :students do
     resources :notes
   end

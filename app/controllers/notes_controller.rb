@@ -28,10 +28,12 @@ class NotesController < ApplicationController
     def show
         @note = Note.find_by(id: params[:id])
     end
+
+
     private
 
     def note_params
-        params.require(:note).permit(:content, :student_id, :user_id)
+        params.require(:note).permit(:content, :created_at, :student_id, :user_id)
     end
 
 end
