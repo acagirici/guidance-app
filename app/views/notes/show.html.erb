@@ -1,3 +1,6 @@
-<h2><%= @note.content%> - <%= @note.user.username%></h2>
+<h2><%= @note.subject%> - Submitted by:<%= @note.user.username%></h2>
+<p><strong>Date Submitted:</strong><%= @note.created_at.strftime("%A, %B %d, %Y") %></p>
+<h4>Notes From Meeting:</h4>
+<p><%= @note.content %></p>
 
 <h4>View More Student Notes: <%= link_to @note.student.first_name, student_path(@note.student_id) %></h4>

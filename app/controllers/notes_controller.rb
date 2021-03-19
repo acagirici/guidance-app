@@ -3,7 +3,7 @@ class NotesController < ApplicationController
         if params[:student_id] && @student = Student.find_by_id(params[:student_id])
             @notes = @student.notes
         else
-            #@error = "That Student Doesn't Exist" if params[student_id]
+            @error = "That Student Doesn't Exist" if params[:student_id]
             @notes = Note.all
         end
     end
@@ -33,7 +33,7 @@ class NotesController < ApplicationController
     private
 
     def note_params
-        params.require(:note).permit(:content, :created_at, :student_id, :user_id)
+        params.require(:note).permit(:content, :created_at, :student_id, :user_id, :subject)
     end
 
 end

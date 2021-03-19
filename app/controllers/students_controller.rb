@@ -32,11 +32,13 @@ class StudentsController < ApplicationController
     def edit
         @student = Student.find_by_id(params[:id])
         redirect_to students_path if !@student || @student.user != current_user
+        @notice = "You may not edit a student you didn't create"
       end
     
       def update
          @student = Student.find_by(id: params[:id])
          redirect_to students_path if !@student || @student.user != current_user
+         @notice = "You may not edit a student you didn't create"
         if @student.update(student_params)
           redirect_to student_path(@student)
         else

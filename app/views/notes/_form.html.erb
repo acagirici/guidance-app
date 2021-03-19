@@ -1,0 +1,18 @@
+<%= render partial: "layouts/errors", locals: {object: @note} %>
+
+<%= form_for([@note.student, @note]) do |f|%>
+ <% if !@note.student %>
+  <%= f.label :student %>:  
+  <%= f.collection_select :student_id, Student.all, :id, :first_name %><br></br>
+<% else %>
+    <%= f.hidden_field :student_id %>
+<% end %>
+  <%= f.label :created_at, "Date" %>:
+  <%= f.date_field :created_at %><br></br>
+    <%= f.label :subject, "Meeting Subject" %>:
+  <%= f.text_field :subject %><br></br>
+  <%= f.label :content %>:
+  <%= f.text_area :content, size:"70x8" %><br></br>
+  <%= f.submit %><br>
+<% end %>
+

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_18_003356) do
+ActiveRecord::Schema.define(version: 2021_03_19_033906) do
 
   create_table "notes", force: :cascade do |t|
     t.text "content"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2021_03_18_003356) do
     t.integer "student_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "subject"
     t.index ["student_id"], name: "index_notes_on_student_id"
     t.index ["user_id"], name: "index_notes_on_user_id"
   end

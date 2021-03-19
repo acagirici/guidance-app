@@ -10,8 +10,8 @@ class SessionsController < ApplicationController
             session[:user_id] = @user.id
             redirect_to user_path(@user)
         else
-            flash[:error] = "Login Credentials Do Not Match Records"
-            render 'new'
+            flash[:alert] = "Login Credentials Do Not Match Records"
+            redirect_to "/login"
         end
     end
 
@@ -28,7 +28,7 @@ class SessionsController < ApplicationController
             redirect_to '/'
         end
     end
-    
+
     def destroy
         session.clear
         redirect_to root_path

@@ -7,7 +7,7 @@
 <ul>
   <% @notes.each do |n| %>
     <li>
-      <%= n.user.username %> submitted "<%= n.content %>" on this student: <%= link_to n.student.first_name, student_path(n.student_id) %>
+      <%= n.user.username %> submitted "<%= link_to n.subject, note_path(n) %>" on <strong><%= n.created_at.strftime("%m/%d/%Y")%></strong> for <%= link_to n.student.first_name, student_path(n.student_id) %>
     </li>
   <% end %>
 </ul>

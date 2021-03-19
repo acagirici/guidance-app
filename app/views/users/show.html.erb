@@ -1,8 +1,8 @@
 <h1> Welcome <%= current_user.username %> </h1>
 
-<h1><%= display_students %></h1>
+<h1><%= display_students %></h1> 
 <ul>
-    <% @user.students.each do |s|%>
-      <li><%= link_to s.first_name, user_students_path(@user, s) %> - <%= s.last_name%> </li>
+    <% current_user.students.each do |s|%>
+      <li><%= link_to s.first_name, user_path(s) %> - <%= s.last_name%> </li>
     <% end %>
 </ul>
