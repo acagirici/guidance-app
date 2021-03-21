@@ -10,9 +10,9 @@ class StudentsController < ApplicationController
 
     def index
         if params[:user_id] && @user = User.find_by_id(params[:user_id])
-            @students = @user.students.all.alpha
+            @students = @user.students.alpha_order
         else
-            @students = Student.all.alpha.includes(:user)
+            @students = Student.alpha_order
         end
     end
 
@@ -32,13 +32,13 @@ class StudentsController < ApplicationController
     def edit
         @student = Student.find_by_id(params[:id])
         redirect_to students_path if !@student || @student.user != current_user
-        @notice = "You may not edit a student you didn't create"
+        flash[:notice] = "You may not edit a student you didn't create"
       end
     
       def update
          @student = Student.find_by(id: params[:id])
-         redirect_to students_path if !@student || @student.user != current_user
-         @notice = "You may not edit a student you didn't create"
+        redirect_to students_path if !@student || @student.user != current_user 
+
         if @student.update(student_params)
           redirect_to student_path(@student)
         else

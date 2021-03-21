@@ -30,7 +30,8 @@
         <%= flash[:alert] %>
       <% end %>
       <%= @error %>
-      <%= @notice %>
+      <%= flash[:notice] if flash[:notice] %>
+  
     </div>
 
     <%= yield %>

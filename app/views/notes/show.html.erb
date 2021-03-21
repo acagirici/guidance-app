@@ -1,4 +1,4 @@
-<h2><%= @note.subject%> - Submitted by:<%= @note.user.username%></h2>
+<h2><%= @note.subject%> - Submitted by:<%= @note.user.username%></h2> (<%= link_to "Edit Meeting Note", edit_note_path(@note) %>)
 <p><strong>Date Submitted:</strong><%= @note.created_at.strftime("%A, %B %d, %Y") %></p>
 <h4>Notes From Meeting:</h4>
 <p><%= @note.content %></p>

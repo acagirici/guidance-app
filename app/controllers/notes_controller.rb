@@ -29,6 +29,16 @@ class NotesController < ApplicationController
         @note = Note.find_by(id: params[:id])
     end
 
+    def edit
+    end
+
+    def update
+        if @note.update(note_params)
+            redirect_to note_path(@note)
+        else
+            render :edit
+        end
+    end
 
     private
 

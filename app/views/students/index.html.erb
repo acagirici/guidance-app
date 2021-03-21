@@ -1,9 +1,12 @@
 <%= index_display_header %>
 
-<ul>
+<ol>
   <% @students.each do |s| %>
     <li>
-      <%= link_to s.first_name, student_path(s) %>
+      <strong>Student Name:</strong> <%= s.last_name.titleize %>, <%= s.first_name.titleize %> (<%= link_to "Student Page", student_path(s) %>) || 
+      <strong>Counselor:</strong> <%= s.user.username.titleize %> || 
+      <strong>Total Meetings =></strong> <%= s.notes.count %> 
     </li>
   <% end %>
-</ul>
+</ol>
+
