@@ -31,8 +31,10 @@ class StudentsController < ApplicationController
 
     def edit
         @student = Student.find_by_id(params[:id])
-        redirect_to students_path if !@student || @student.user != current_user
-        flash[:notice] = "You may not edit a student you didn't create"
+        if !@student || @student.user != current_user
+            redirect_to students_path
+            flash[:notice] = "You may not edit a student you didn't create"
+        end
       end
     
       def update
@@ -43,6 +45,7 @@ class StudentsController < ApplicationController
           redirect_to student_path(@student)
         else
           render :edit
+          
         end
       end
 

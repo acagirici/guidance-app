@@ -30,9 +30,11 @@ class NotesController < ApplicationController
     end
 
     def edit
+        @note = Note.find_by(id: params[:id])
     end
 
     def update
+        @note = Note.find_by(id: params[:id])
         if @note.update(note_params)
             redirect_to note_path(@note)
         else

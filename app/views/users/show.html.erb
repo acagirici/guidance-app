@@ -3,6 +3,6 @@
 <h1><%= display_students %></h1> 
 <ul>
     <% current_user.students.each do |s|%>
-      <li><%= link_to s.first_name, user_path(s) %> - <%= s.last_name%> </li>
+      <li><%= s.first_name %> <%= s.last_name%> (<%= link_to "Student Page", student_path(s) %>) </li>
     <% end %>
 </ul>
