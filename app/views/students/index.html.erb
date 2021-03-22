@@ -1,12 +1,28 @@
 <%= index_display_header %>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+</style>
+<Table>
+  <tr>
+      <th>Student Last Name</th>
+       <th>Student First Name</th>
+      <th>Advisor</th>
+      <th>Total Meetings</th>
+      <th>Student Page</th>
+   </tr>
 
-<ol>
   <% @students.each do |s| %>
-    <li>
-      <strong>Student Name:</strong> <%= s.last_name.titleize %>, <%= s.first_name.titleize %> (<%= link_to "Student Page", student_path(s) %>) || 
-      <strong>Counselor:</strong> <%= s.user.username.titleize %> || 
-      <strong>Total Meetings =></strong> <%= s.notes.count %> 
-    </li>
+  
+    <tr>
+      <td><%= s.last_name.titleize %></td>
+      <td><%= s.first_name.titleize %></td>
+      <td><%= s.user.username.titleize %></td>
+      <td><%= s.notes.count %> </td>
+      <td><%= link_to "Got to Student Page", student_path(s) %></td>
+     </tr> 
   <% end %>
-</ol>
+</Table>
 
