@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_19_033906) do
+ActiveRecord::Schema.define(version: 2021_04_02_175802) do
+
+  create_table "categories", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "notes", force: :cascade do |t|
     t.text "content"
@@ -32,6 +37,7 @@ ActiveRecord::Schema.define(version: 2021_03_19_033906) do
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "category_id"
     t.index ["user_id"], name: "index_students_on_user_id"
   end
 
