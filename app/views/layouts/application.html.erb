@@ -12,17 +12,19 @@
 
   <body>
 
-    <div>
+    <div class="container">
+    <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span>
+    <ul class="nav navbar-nav mr-auto">
       <% if user_authenticated %>
-        <%= link_to "Create New Student", new_student_path %> ||
-        <%= link_to "All Students", students_path %> ||
-        <%= link_to "My Students", user_students_path(current_user) %> ||
-        <%= link_to "Create Meeting Note", new_note_path %> ||
-        <%= link_to "All Meeting Notes", notes_path %> ||
-        <%= link_to "Home", user_path(current_user) %> ||
-        <%= link_to "Logout", logout_path, method: "delete" %> 
+        <li class="nav-item"><%= link_to "Create New Student", new_student_path %></li>
+        <li class="nav-item"><%= link_to "All Students", students_path %></li>
+        <li class="nav-item"><%= link_to "My Students", user_students_path(current_user) %></li>
+        <li class="nav-item"><%= link_to "Create Meeting Note", new_note_path %></li>
+        <li class="nav-item"><%= link_to "All Meeting Notes", notes_path %></li>
+        <li class="nav-item"><%= link_to "Home", user_path(current_user) %></li>
+        <li class="nav-item"><%= link_to "Logout", logout_path, method: "delete" %></li>
       <% end %>
-
+    </ul>
     </div>
 
     <div>
